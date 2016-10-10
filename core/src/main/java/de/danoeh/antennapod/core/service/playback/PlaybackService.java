@@ -1322,7 +1322,7 @@ public class PlaybackService extends MediaBrowserServiceCompat {
 
         if (info.playable != null) {
             Intent i = new Intent(whatChanged);
-            i.putExtra("id", 1);
+            i.putExtra("id", 1L);
             i.putExtra("artist", "");
             i.putExtra("album", info.playable.getFeedTitle());
             i.putExtra("track", info.playable.getEpisodeTitle());
@@ -1332,7 +1332,7 @@ public class PlaybackService extends MediaBrowserServiceCompat {
                 i.putExtra("ListSize", queue.size());
             }
             i.putExtra("duration", info.playable.getDuration());
-            i.putExtra("position", info.playable.getPosition());
+            i.putExtra("position", (long)info.playable.getPosition());
             sendBroadcast(i);
         }
     }
