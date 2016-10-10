@@ -1079,10 +1079,15 @@ public class PlaybackService extends MediaBrowserServiceCompat {
                 }
             }
             if (!Thread.currentThread().isInterrupted() && started) {
-                mediaSession.setSessionActivity(PendingIntent.getActivity(this, 0,
-                        PlaybackService.getPlayerActivityIntent(this),
-                        PendingIntent.FLAG_UPDATE_CURRENT));
-                mediaSession.setMetadata(builder.build());
+                try {
+                    mediaSession.setSessionActivity(PendingIntent.getActivity(this, 0,
+                            PlaybackService.getPlayerActivityIntent(this),
+                            PendingIntent.FLAG_UPDATE_CURRENT));
+                    mediaSession.setMetadata(builder.build());
+                }catch (Throwable tr)
+                {
+                    Log.e(TAG, Log.getStackTraceString(tr));
+                }
             }
         };
 
