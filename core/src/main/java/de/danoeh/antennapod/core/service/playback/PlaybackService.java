@@ -1331,7 +1331,7 @@ public class PlaybackService extends MediaBrowserServiceCompat {
             if (queue != null) {
                 i.putExtra("ListSize", queue.size());
             }
-            i.putExtra("duration", info.playable.getDuration());
+            i.putExtra("duration", (long)info.playable.getDuration());
             i.putExtra("position", (long)info.playable.getPosition());
             sendBroadcast(i);
         }
